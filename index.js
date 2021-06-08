@@ -1,7 +1,5 @@
-const vid = document.getElementById("video");
-
-vid.onloadeddata = () => {
-
+function main() {
+    const vid = document.getElementById("video");
     const vidContainer = document.getElementById("vid-container");
     const controls = document.getElementById("controls");
     const playButton = document.getElementById("play");
@@ -22,7 +20,6 @@ vid.onloadeddata = () => {
     let counter = 0;
     playButton.addEventListener("click", () => {
         userClick = true;
-        console.log(userClick);
         if (counter == 0) {
             controls.style.opacity = "0"
         };
@@ -47,8 +44,8 @@ vid.onloadeddata = () => {
             setTimeout(() => {
                 controls.style.opacity = "0";
                 controls.style.pointerEvents = "none";
-            }, 3000);
-        } else {
+            }, 2000);
+        } else if (userClick) {
             controls.style.opacity = "1";
             controls.style.pointerEvents = "auto";
         }
@@ -86,13 +83,15 @@ function fullscreenHandler(btn, elem) {
     }
 
     function closeFullscreen() {
-        if (elem.exitFullscreen) {
-            elem.exitFullscreen();
-        } else if (elem.webkitExitFullscreen) {
-            elem.webkitExitFullscreen();
-        } else if (elem.msExitFullscreen) {
-            elem.msExitFullscreen();
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        } else if (document.webkitExitFullscreen) {
+            document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) {
+            document.msExitFullscreen();
         }
         btn.innerHTML = "fullscreen";
     }
 }
+
+main();
