@@ -4,7 +4,7 @@
     position: relative;
 }
 
-.vid {
+#video {
     z-index: 0;
     width: 100%;
     display: block;
@@ -13,7 +13,7 @@
     user-select: none;
 }
 
-.vid::-webkit-media-controls-panel {
+#video::-webkit-media-controls-panel {
     display: none !important;
     opacity: 1 !important;
 }
