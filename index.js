@@ -1,5 +1,8 @@
+const video = document.getElementById("video");
+
+video.onloadeddata = () => main();
+
 function main() {
-    const vid = document.getElementById("video");
     const vidContainer = document.getElementById("vid-container");
     const controls = document.getElementById("controls");
     const playButton = document.getElementById("play");
@@ -12,10 +15,10 @@ function main() {
 
     fullscreenHandler(fullscreen, vidContainer);
 
-    vid.play();
+    video.play();
 
     setTimeout(() => {
-        vid.pause();
+        video.pause();
         controls.style.opacity = "1";
     }, 5000);
 
@@ -23,12 +26,12 @@ function main() {
     playButton.addEventListener("click", () => {
         userClick = true;
         counter++;
-        if (vid.paused) {
-            vid.play();
+        if (video.paused) {
+            video.play();
             playButton.innerHTML = "pause";
             playing = true;
         } else {
-            vid.pause();
+            video.pause();
             controls.style.opacity = "1";
             playButton.innerHTML = "play_arrow";
             playing = false;
@@ -107,5 +110,3 @@ function fullscreenHandler(btn, elem) {
         btn.innerHTML = "fullscreen";
     }
 }
-
-main();
