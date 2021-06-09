@@ -7,6 +7,8 @@ function main() {
 
     let userClick = false;
     let playing = true;
+    let hover = false;
+    let fadeOut;
 
     fullscreenHandler(fullscreen, vidContainer);
 
@@ -20,9 +22,6 @@ function main() {
     let counter = 0;
     playButton.addEventListener("click", () => {
         userClick = true;
-        if (counter == 0) {
-            controls.style.opacity = "0"
-        };
         counter++;
         if (vid.paused) {
             vid.play();
@@ -36,18 +35,33 @@ function main() {
         }
     })
 
+    controls.onmouseenter = () => {
+        hover = true;
+        controls.style.opacity = "1";
+        clearTimeout(fadeOut);
+    }
+
+    controls.onmouseleave = () => {
+        hover = false;
+    }
 
     vidContainer.onmousemove = () => {
-        if (userClick && playing) {
+
+        if (userClick == true && playing == true) {
             controls.style.opacity = "1";
             controls.style.pointerEvents = "auto";
-            setTimeout(() => {
-                controls.style.opacity = "0";
-                controls.style.pointerEvents = "none";
-            }, 2000);
-        } else if (userClick) {
+            fadeOut = setTimeout(() => {
+                if (hover == false) {
+                    controls.style.opacity = "0";
+                    controls.style.pointerEvents = "none";
+                    console.log(hover);
+                    console.log("opacity 0");
+                }
+            }, 1000);
+        } else if (userClick == true) {
             controls.style.opacity = "1";
             controls.style.pointerEvents = "auto";
+
         }
     }
 };
