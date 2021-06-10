@@ -6,9 +6,9 @@ HTML:
 
 ```
 <div id="vid-container">
-  <video id="video" class="vid"
-    src="https://ual-media-res.cloudinary.com/video/upload/v1623320810/csm/LandingPageAnimation.mp4" muted loop></video>
-    <div id="controls">
+  <video id="video"
+    src="https://ual-media-res.cloudinary.com/video/upload/v1623320810/csm/LandingPageAnimation.mp4" type='video/mp4' muted loop playsinline></video>
+  <div id="controls">
     <span id="play">play_arrow</span>
     <span id="fullscreen">fullscreen</span>
   </div>
@@ -16,6 +16,6 @@ HTML:
 <script src="index.js"></script>
 ```
 
-CSS: main.css
+CSS: style.css
 
 JS: index.js
