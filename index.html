@@ -14,7 +14,7 @@
     <video id="video" src="https://ual-media-res.cloudinary.com/video/upload/v1623320810/csm/LandingPageAnimation.mp4"
       type='video/mp4' muted loop playsinline></video>
     <div id="controls">
-      <span id="play">pause</span>
+      <span id="play">play_arrow</span>
     </div>
   </div>
   <script>
@@ -23,6 +23,8 @@
       const playButton = document.getElementById("play");
 
       video.play(); //start video playback
+      playButton.innerHTML = "pause"; // change button to pause icon once video starts playing
+
       setTimeout(() => {
         video.pause(); // pause video after 5 seconds of playback (to comply with accessibility guidelines)
         playButton.innerHTML = "play_arrow"; // change button to play icon
