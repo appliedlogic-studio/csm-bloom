@@ -13,29 +13,26 @@ HTML:
   </div>
 </div>
 <script>
-  window.onload = () => {
-    const video = document.getElementById("video");
-    const playButton = document.getElementById("play");
+  const video = document.getElementById("video");
+  const playButton = document.getElementById("play");
 
-    video.play(); //start video playback
-    playButton.innerHTML = "pause"; // change button to pause icon once video starts playing
+  video.play(); //start video playback
+  playButton.innerHTML = "pause"; // change button to pause icon once video starts playing
 
-    setTimeout(() => {
-      video.pause(); // pause video after 5 seconds of playback (to comply with accessibility guidelines)
+  setTimeout(() => {
+    video.pause(); // pause video after 5 seconds of playback (to comply with accessibility guidelines)
+    playButton.innerHTML = "play_arrow"; // change button to play icon
+  }, 5000);
+
+  playButton.addEventListener("click", () => {
+    if (video.paused) {
+      video.play(); // click plays video if current state is paused
+      playButton.innerHTML = "pause"; // change button to pause icon
+    } else {
+      video.pause(); // click pauses video if current state is playing
       playButton.innerHTML = "play_arrow"; // change button to play icon
-    }, 5000);
-
-    playButton.addEventListener("click", () => {
-      userClick = true; // user has interacted with the controls
-      if (video.paused) {
-        video.play(); // click plays video if current state is paused
-        playButton.innerHTML = "pause"; // change button to pause icon
-      } else {
-        video.pause(); // click pauses video if current state is playing
-        playButton.innerHTML = "play_arrow"; // change button to play icon
-      }
-    });
-  }
+    }
+  });
 </script>
 ```
 
